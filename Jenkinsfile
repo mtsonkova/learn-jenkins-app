@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     stages {
-        /*
-
+        
         stage('Build') {
             agent {
                 docker {
@@ -22,14 +21,15 @@ pipeline {
                 '''
             }
         }
-        */
-
-        stage('Test') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
+        
+        stage('Run tests') {
+            parallel {
+                 stage('Test') {
+                    agent {
+                            docker {
+                                    image 'node:18-alpine'
+                                    reuseNode true
+                                }
             }
 
             steps {
@@ -57,6 +57,9 @@ pipeline {
                 '''
             }
         }
+            }
+        }
+       
     }
 
     post {
