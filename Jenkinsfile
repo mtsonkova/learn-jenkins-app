@@ -36,9 +36,8 @@ pipeline {
                 '''
             }
         }
-    }
 
-    // Playeright E2E tests
+        // Playeright E2E tests
     stage('E2E') {
             agent{
                 docker{
@@ -55,6 +54,9 @@ pipeline {
             }
         }
     }
+    }
+
+    
 
     post {
         always {
