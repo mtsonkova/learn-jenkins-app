@@ -38,7 +38,7 @@ pipeline {
         }
 
         // Playeright E2E tests
-    stage('E2E') {
+        stage('E2E') {
             agent{
                 docker{
                     image "mcr.microsoft.com/playwright:v1.49.0-noble"
